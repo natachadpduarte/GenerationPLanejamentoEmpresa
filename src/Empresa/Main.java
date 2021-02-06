@@ -17,11 +17,11 @@ public class Main {
 			
 		}catch (InputMismatchException e) {
 			System.out.println("Você digitou uma entrada inválida, por favor tente novamente!\nErro: "+e);
-			this.getAnexo();
+			return this.getAnexo();
 		}
 		catch(NumberFormatException ne) {
 			System.out.println("Você digitou uma entrada inválida, por favor tente novamente!\nErro: "+ne);
-			this.getAnexo();
+			return this.getAnexo();
 		}
 		return anexo;
 	}
@@ -32,6 +32,12 @@ public class Main {
 		
 		System.out.println("Olá empresário! Bem vindo! Vamos planejar seu futuro?\n");
 		System.out.println("Qual a atividade da sua empresa? (Escolha um número): ");
+		
+		System.out.println("Digite o nome da empresa");
+		String nome= EntradaUsuario.getString();
+		
+		System.out.println("Digite o CNPJ da empresa");
+		String cnpj= EntradaUsuario.getString();
 		
 		anexo = this.getAnexo();
 		System.out.println(anexo);

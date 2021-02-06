@@ -15,5 +15,7 @@ public class EntradaUsuario {
 		
 	}
 	
-	
+	public static String getString() {
+		return leitura.nextLine();
+	}
 }
