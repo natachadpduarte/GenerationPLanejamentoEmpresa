@@ -3,6 +3,7 @@ package Empresa;
 import java.util.List;
 
 public class SaidaUsuario {
+	//static Scanner = new Sc
 	public static void qualAnexo() {
 		String menuAnexo = "1- Anexo I - Comércio\r\n"
 				  + "2- Anexo II - Industria\r\n"

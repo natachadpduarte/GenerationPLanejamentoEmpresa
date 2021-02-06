@@ -1,10 +1,10 @@
 package Empresa;
 
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+
 
 public abstract class Empresa {
 	//dados gerais da empresa 
@@ -43,18 +43,19 @@ public abstract class Empresa {
 	public void digitaFaturamento() {
 		float valor;
 		for (int i = 1; i <= 12; i++) {
-			try (Scanner ler = new Scanner(System.in)) {
-				System.out.print("\nDigite o valor do mês "+i+": ");
-				valor = (ler.nextFloat());
+			System.out.print("\nDigite o valor do mês "+i+": ");
+			try {
+				valor = EntradaUsuario.getFloat();
 				this.faturamento.add(valor);
-			}catch (InputMismatchException e) {
-				System.out.println("Você digitou uma entrada inválida, por favor redigite o valor!");
-				i--;
-			}catch(NoSuchElementException s) {
-				System.out.println("Erro com scanner: "+s);
-				valor = (float) (Math.random()*3000)+2000;
-				this.faturamento.add(valor);
+			}catch(InputMismatchException ie) {
+				System.out.println("Erro: "+ie);
+				i--; //faço ele voltar a digitar esse valor 
 			}
+			catch(NumberFormatException ne) {
+				System.out.println("Erro: "+ne);
+				i--; //faço ele voltar a digitar esse valor 
+			}
+
 		}
 		System.out.println();
 		//já calcula o faturamento total 

@@ -1,30 +1,40 @@
 package Empresa;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
+
 
 public class Main {
-	
-	public void execucaoPrograma() {
-		// TODO Auto-generated constructor stub
+	public int getAnexo() {
 		int anexo= 0;
-		
-		System.out.println("Olá empresário! Bem vindo! Vamos planejar seu futuro?\n");
-		System.out.println("Qual a atividade da sua empresa? (Escolha um número): ");
 		SaidaUsuario.qualAnexo();
-		
-		try (Scanner leitura = new Scanner(System.in)) {
-			anexo = Integer.parseInt(leitura.nextLine());
+		try {
+			anexo = EntradaUsuario.getInt();
 			while(anexo < 1 || anexo >5 ) {
 				System.out.println("Por favor digite um valor válido, atente-se ao menu: ");
 				SaidaUsuario.qualAnexo();
-				anexo = Integer.parseInt(leitura.nextLine());
+				anexo = EntradaUsuario.getInt();
 			}
-			leitura.close();
 			
 		}catch (InputMismatchException e) {
-			System.out.println("Você digitou uma entrada inválida, estamos encerrando programa!"+e);
+			System.out.println("Você digitou uma entrada inválida, por favor tente novamente!\nErro: "+e);
+			this.getAnexo();
 		}
+		catch(NumberFormatException ne) {
+			System.out.println("Você digitou uma entrada inválida, por favor tente novamente!\nErro: "+ne);
+			this.getAnexo();
+		}
+		return anexo;
+	}
+	
+	public void execucaoPrograma() {
+		// TODO Auto-generated constructor stub
+		int anexo;
+		
+		System.out.println("Olá empresário! Bem vindo! Vamos planejar seu futuro?\n");
+		System.out.println("Qual a atividade da sua empresa? (Escolha um número): ");
+		
+		anexo = this.getAnexo();
+		System.out.println(anexo);
 		switch (anexo) {
 			case 1: {
 				//chama a classe do case 1
